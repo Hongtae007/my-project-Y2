@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>หน้าแรกของเว็บไซต์</title>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">ข้อมูลนักศึกษา</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <strong>{{message}}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ลำดับ</th>
+            <th scope="col">ชื่อ-สกุล</th> 
+            <th scope="col">รหัสนักศึกษา</th>
+            <th scope="col">สถานะศึกษา</th>
+            <th scope="col">หลักสูตร</th>
+            <th scope="col">อาจารย์ที่ปรึกษา</th>
+            <th scope="col">ชื่อผลงาน</th>
+            <th scope="col">ประเภทการเผยแพร่</th>
+            <th scope="col">ชื่อวารสารและสถานที่</th>
+            <th scope="col">แก้ไข</th>
+            <th scope="col">ลบ</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for person in all_person %}
+            <tr>
+                <th scope="row">{{person.id}}</th>
+                <td>{{person.name}}</td>
+                <td>{{person.s_id}}</td>
+                <td>{{person.status}}</td>
+                <td>{{person.course}}</td>
+                <td>{{person.teacher}}</td>
+                <td>{{person.performance}}</td>
+                <td>{{person.typ_work}}</td>
+                <td>{{person.jour_name_place}}</td>
+                    </td>
+                <td><a href="edit/{{person.id}}" class="btn btn-warning">แก้ไข</a></td>
+                <td>
+                    <a href="delete/{{person.id}}" 
+                    class="btn btn-danger"
+                    onclick="return confirm('คุณต้องการลบ {{person.name}} หรือไม่ ?')"
+                    >ลบ</a>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

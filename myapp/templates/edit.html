@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>แบบฟอร์มแก้ข้อมูลประชากร</title>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">แบบฟอร์มแก้ไขข้อมูลประชากร</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">ชื่อ-สกุล</label>
+            <input type="text" name="name" class="form-control" value="{{person.name}}">
+        </div>
+        <div class="form-group mb-3">
+            <label for="s_id">รหัสนักศึกษา</label>
+            <input type="number" name="s_id" class="form-control" value="{{person.s_id}}">
+        </div>
+        <div class="form-group">
+            <label for="status">สถานะศึกษา</label>
+            <input type="text" name="status" class="form-control" value="{{person.status}}">
+        </div>
+        <div class="form-group">
+            <label for="course">หลักสูตร</label>
+            <input type="text" name="course" class="form-control" value="{{person.course}}">
+        </div>
+        <div class="form-group">
+            <label for="teacher">อาจารย์ที่ปรึกษา</label>
+            <input type="text" name="teacher" class="form-control" value="{{person.teacher}}">
+        </div>
+        <div class="form-group">
+            <label for="performance">ชื่อผลงาน</label>
+            <input type="text" name="performance" class="form-control" value="{{person.performance}}">
+        </div>
+        <div class="form-group ">
+            <label for="typ_work">ประเภทการเผยแพร่</label>
+            <input type="text" name="typ_work" class="form-control">
+        </div>
+        <div class="form-group ">
+            <label for="jour_name_place">ชื่อวารสารและสถานที่</label>
+            <input type="text" name="jour_name_place" class="form-control">
+        </div>
+        <input type="submit" value="อัพเดตข้อมูล" class="btn btn-success">
+    </form>
+{% endblock %}
